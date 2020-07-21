@@ -42,7 +42,7 @@ AOP有以下重要部分组成：
 同理，事务的处理也是，在方法前开始事务，方法后提交事务
 
 ### 3. Spring的体系结构
-![无法加载图片](https://raw.githubusercontent.com/huteng-dev/huteng-dev.github.io/master/img/spring.png)<br>
+![无法加载图片](https://huteng-dev.github.io/img/spring.png)<br>
 
 核心容器由`spring-core，spring-beans，spring-context 和 spring-expression`（SpEL，Spring表达式语言，Spring Expression Language）等模块组成，它们的细节如下：
 
