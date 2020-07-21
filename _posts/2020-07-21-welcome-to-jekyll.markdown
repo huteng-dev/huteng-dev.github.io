@@ -12,6 +12,11 @@ categories: Test
 print("hello,world")
 ```
 
-跳转[跳转至bilibili][bilibili]
+自动创建文章：
+```javascript
+rake post title="test"
+```
+
+跳转[bilibili][bilibili]
 
 [bilibili]: https://www.bilibili.com/
