@@ -19,7 +19,8 @@ Spring 官网：[https://spring.io/projects/](https://spring.io/projects/)
 EE开发可分成三层架构，针对JavaEE的三层结构，每一层Spring都提供了不同的解决技术。
 + WEB层：SpringMVC
 + 业务层：Spring的IoC
-+ 持久层：Spring的JDBCTemplate(Spring的JDBC模板，ORM模板用于整合其他的持久层框架)<br>
++ 持久层：Spring的JDBCTemplate(Spring的JDBC模板，ORM模板用于整合其他的持久层框架)
+
 ### 2. Spring的核心有两部分：
 + IOC：使得主业务在相互调用过程中，不用再自己维护关系了，即不用再自己创建要使用的对象了，而是由 Spring 容器统一管理，实现自动**注入**。
 + AOP：使得系统级服务得到了最大复用，且不用再手工将系统级服务混杂到主业务逻辑中了，而是由 Spring 容器统一完成**织入**。<br>
@@ -36,6 +37,7 @@ EE开发可分成三层架构，针对JavaEE的三层结构，每一层Spring都
 + `spring-context`：模块建立在由core和 beans 模块的基础上建立起来的，它以一种类似于JNDI注册的方式访问对象。Context模块继承自Bean模块，并且添加了国际化（比如，使用资源束）、事件传播、资源加载和透明地创建上下文（比如，通过Servelet容器）等功能
 
 + `spring-expression`：提供了强大的表达式语言，用于在运行时查询和操作对象图。它是JSP2.1规范中定义的统一表达式语言的扩展，支持set和get属性值、属性赋值、方法调用、访问数组集合及索引的内容、逻辑算术运算、命名变量、通过名字从Spring IoC容器检索对象，还支持列表的投影、选择以及聚合等。
+
 ### 4. Spring的优点
 + 方便解耦，简化开发。<br>
 Spring就是一个大工厂，可以将所有对象的创建和依赖关系的维护，交给Spring管理。
