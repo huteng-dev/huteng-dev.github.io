@@ -5,11 +5,11 @@ date: 2020-07-21 15:33:29
 categories: Spring
 ---
 
-
-
 Spring 是分层的 Java SE/EE 应用 full-stack 轻量级开源框架，以 `IoC（Inverse Of Control：反转控制）`和 `AOP（Aspect Oriented Programming：面向切面编程）`为内核，提供了展现层`Spring MVC`和持久层`Spring JDBC`以及业务层事务管理等众多的企业级应用技术，还能整合开源世界众多著名的第三方框架和类库，逐渐成为使用最多的 Java EE 企业应用开源框架.
 
 
+* 目录
+{:toc}
 > 什么是容器(Container): 从程序设计角度看就是封装对象的对象,因为存在放入、拿出等操作,所以容器还要管理对象的生命周期,如Tomcat就是Servlet和JSP的容器;
 
 
