@@ -8,13 +8,11 @@ categories: Spring
 Spring 是分层的 Java SE/EE 应用 full-stack 轻量级开源框架，以 `IoC（Inverse Of Control：反转控制）`和 `AOP（Aspect Oriented Programming：面向切面编程）`为内核，提供了展现层`Spring MVC`和持久层`Spring JDBC`以及业务层事务管理等众多的企业级应用技术，还能整合开源世界众多著名的第三方框架和类库，逐渐成为使用最多的 Java EE 企业应用开源框架.
 
 
+目录
 * 目录
 {:toc}
-> 什么是容器(Container): 从程序设计角度看就是封装对象的对象,因为存在放入、拿出等操作,所以容器还要管理对象的生命周期,如Tomcat就是Servlet和JSP的容器;
 
-
-Spring 官网：[https://spring.io/projects/](https://spring.io/projects/)
-
+## Spring简介
 ### 1. 为什么说Spring是一个一站式的轻量级开源框架呢？
 EE开发可分成三层架构，针对JavaEE的三层结构，每一层Spring都提供了不同的解决技术。
 + WEB层：SpringMVC
@@ -57,8 +55,11 @@ Spring不排斥各种优秀的开源框架，其内部提供了对各种优秀�
 + 降低JavaEE API的使用难度<br>
 Spring对JavaEE开发中非常难用的一些API(JDBC、JavaMail、远程调用等)都提供了封装，使这些API应用难度大大降低。
 
+
+Spring 官网：[https://spring.io/projects/](https://spring.io/projects/)
+
 ---
-### IOC介绍
+## IOC介绍
 
 + IOC: (Inversion(反转) Of Control)：控制反转
     + 控制:资源的获取方式
@@ -92,7 +93,7 @@ DI（Dependency Injection）依赖注入：<br>
 只要是容器管理的组件，都能使用容器提供的强大功能
 
 ---
-### AOP对代码进行复用
+## AOP对代码进行复用
 利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率。
 
 AOP不是一种技术，实际上是编程思想。凡是符合AOP思想的技术，都可以看成是AOP的实现
