@@ -84,7 +84,7 @@ Spring对JavaEE开发中非常难用的一些API(JDBC、JavaMail、远程调用�
 IOC是一种思想，DI是对这种思想的描述
 
 
-DI（Dependency lnjection）依赖注入：<br>
+DI（Dependency Injection）依赖注入：<br>
 容器能知道哪个组件（类）需要用到用到另一个组件（类），容器通过反射的形式，将容器中准备好的Bookservice对象注入（*利用反射给属性赋值*）到BookService
 
 只要是容器管理的组件，都能使用容器提供的强大功能
