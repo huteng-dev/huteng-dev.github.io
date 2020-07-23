@@ -19,6 +19,10 @@ layout: default
   <div class="post">
     {{ content }}
   </div>
+  
+  {% include _includes/valine.html %}
+
+
   {%- if site.plainwhite.disqus_shortname -%}
   <div id="disqus_thread" style="margin-top:25px"></div>
   <script>
@@ -37,6 +41,6 @@ layout: default
       powered by Disqus.</a></noscript>
   {%- endif -%}
 
-  {% include _includes/valine.html %}
+
 
 </div>
