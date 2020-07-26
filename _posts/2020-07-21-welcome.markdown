@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "Welcome"
+date:   2020-07-21 21:09:46 +0530
+categories: Test
+---
+欢迎参观。
+
+
+这是本人利用Jekyll - 静态站点生成器搭建的
+
+Jekyll 是一个简单的免费的Blog生成工具，类似WordPress。但是和WordPress又有很大的不同，原因是jekyll只是一个生成静态网页的工具，不需要数据库支持。但是可以配合第三方服务,例如discuz。最关键的是jekyll可以免费部署在Github上，而且可以绑定自己的域名。
+
+本博客用来存放自己的学习记录以及一些其他文章，欢迎大家参观并留言
