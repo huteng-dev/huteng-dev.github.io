@@ -8,15 +8,15 @@ categories: Spring
 Spring 是分层的 Java SE/EE 应用 full-stack 轻量级开源框架，以 `IoC（Inverse Of Control：反转控制）`和 `AOP（Aspect Oriented Programming：面向切面编程）`为内核，提供了展现层`Spring MVC`和持久层`Spring JDBC`以及业务层事务管理等众多的企业级应用技术，还能整合开源世界众多著名的第三方框架和类库，逐渐成为使用最多的 Java EE 企业应用开源框架.
 
 
-目录
 * 目录
+
 {:toc}
 
 ## Spring简介
 ### 1. 为什么说Spring是一个一站式的轻量级开源框架呢？
 EE开发可分成三层架构，针对JavaEE的三层结构，每一层Spring都提供了不同的解决技术。
 + WEB层：SpringMVC
-+ 业务层：Spring的IoC
++ 业务层：Spring的IOC
 + 持久层：Spring的JDBCTemplate(Spring的JDBC模板，ORM模板用于整合其他的持久层框架)
 
 ### 2. Spring的核心有两部分：
@@ -61,6 +61,11 @@ Spring 官网：[https://spring.io/projects/](https://spring.io/projects/)
 ---
 ## IOC介绍
 
+Spring（IOC+AOP）
+
+![无法加载图片](https://huteng-dev.github.io/img/spring-ioc-aop.png)
+
+
 + IOC: (Inversion(反转) Of Control)：控制反转
     + 控制:资源的获取方式
         + 主动式：(需要什么资源自己创建即可)<br>
@@ -91,6 +96,16 @@ DI（Dependency Injection）依赖注入：<br>
 容器能知道哪个组件（类）需要用到用到另一个组件（类），容器通过反射的形式，将容器中准备好的Bookservice对象注入（*利用反射给属性赋值*）到BookService
 
 只要是容器管理的组件，都能使用容器提供的强大功能
+
+```
+Spring有四个注解:
+
+@Controller:控制器;给控制器层(servlet包 下的这些)的组件加这个注解
+@Service:业务逻辑;给业务逻辑层的组件添加这个注解; 
+@Repository:给数据库层(持久化层，dao层)的组件添加这个注解
+@Component:给不属于以上几层的组件添加这个注解;
+```
+*注解可以随便加，Spring底层不会去验证你的这个组件，是否如你注解所说就是一个dao层的或者就是一个servlet层的组件,主要是给程序员看了好理解。*
 
 ---
 ## AOP对代码进行复用
