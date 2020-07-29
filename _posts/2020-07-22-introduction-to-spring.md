@@ -159,6 +159,7 @@ OOP:(Object Oriented Programming)面向对象编程
 + 运行的时候，日志功能可以加上；
 
 可以使用动态代理来将日志代码动态的在目标方法执行前后先进行执行；
+
 ```java
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -229,6 +230,7 @@ public class CalculatorProxy {
 
 }
 ```
+
 动态代理：
 1. 写起来难；
 2. **jdk默认的动态代理，如果目标对象没有实现任何接口，是无法为他创建代理对象的;**
@@ -265,6 +267,7 @@ AOP专业术语
      1. 将目标类和切面类（封装了通知方法（在目标方法执行前后执行的方法））加入到ioc容器中
      2. 还应该告诉Spring到底哪个是切面类`@Aspect`
      3. 告诉Spring，切面类里面的每一个方法，都是何时何地运行；
+
 ```java
 /**
 *5个通知注解
