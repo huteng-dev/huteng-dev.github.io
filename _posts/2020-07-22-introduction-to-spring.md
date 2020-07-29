@@ -246,7 +246,7 @@ AOP专业术语
 
 ### AOP使用步骤：
 
-1. 导包；
+1.导包；
 
 + Spring基础的包：
     + commons-logging-1.1.3.jar
@@ -263,10 +263,12 @@ AOP专业术语
     + com.springsource.net.sf.cglib-2.2.0.jar
     + com.springsource.org.aopalliance-1.0.0.jar
     + com.springsource.org.aspectj.weaver-1.6.8.RELEASE.jar
-2. 写配置；
-     1. 将目标类和切面类（封装了通知方法（在目标方法执行前后执行的方法））加入到ioc容器中
-     2. 还应该告诉Spring到底哪个是切面类`@Aspect`
-     3. 告诉Spring，切面类里面的每一个方法，都是何时何地运行；
+
+2.写配置；
+
+1. 将目标类和切面类（封装了通知方法（在目标方法执行前后执行的方法））加入到ioc容器中
+2. 还应该告诉Spring到底哪个是切面类`@Aspect`
+3. 告诉Spring，切面类里面的每一个方法，都是何时何地运行；
 
 ```java
 /**
@@ -303,10 +305,12 @@ AOP专业术语
         System.out.println("【xxx】方法最终结束了");
     }
 ```
-3. 开启基于注解的AOP模式
+
+3.开启基于注解的AOP模式
 
 在配置文件中开启基于注解的AOP功能；AOP名称空间
-```XML
+
+```xml
 <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 ```
 
