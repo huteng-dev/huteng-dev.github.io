@@ -136,6 +136,92 @@ Spring有四个注解:
 
 好处:我们不用ioc.getBean ()获取组件了;直接Autowired组件。Spring为我们自动装配
 
+### IOC操作步骤
+1. 导包
+
+```
+核心容器
+spring-beans-4.0.0.RELEASE.jar
+spring-context-4.0.0.RELEASE.jar
+spring-core-4.0.0.RELEASE.jar
+spring-expression-4.0.0.RELEASE.jar
+commons-logging-1.1.3.jar
+Spring运行的时候依赖一个日志包；没有就报错；
+```
+
+2. 写配置
+ spring的配置文件中，集合了spring的ioc容器管理的所有组件（会员清单）；
+     创建一个Spring Bean Configuration File（Spring的bean配置文件）；
+
+```xml
+<!-- 注册一个Person对象，Spring会自动创建这个Person对象 -->
+    <!--
+    一个Bean标签可以注册一个组件（对象、类） 
+    class：写要注册的组件的全类名
+    id：这个对象的唯一标示；
+    -->
+    <bean id="person01" class="com.atguigu.bean.Person">
+        <!--使用property标签为Person对象的属性赋值 
+            name="lastName"：指定属性名
+            value="张三"：为这个属性赋值
+        -->
+        <property name="lastName" value="张三"></property>
+        <property name="age" value="18"></property>
+        <property name="email" value="zhangsan@atguigu.com"></property>
+        <property name="gender" value="男"></property>
+    </bean>
+```
+
+3. 测试
+
+```java
+@Test
+    public void test() {
+        //ApplicationContext：代表ioc容器
+        //ClassPathXmlApplicationContext:当前应用的xml配置文件在 ClassPath下
+        //根据spring的配置文件得到ioc容器对象
+        ApplicationContext ioc = new ClassPathXmlApplicationContext("ioc.xml");
+        
+        //容器帮我们创建好对象了；
+        Person bean = (Person) ioc.getBean("person01");
+        
+        System.out.println(bean);
+        
+    }
+```
+
+### 问题及细节
+
+```java
+/**
+     * 存在的几个问题；
+     * 1）、src，源码包开始的路径，称为类路径的开始；
+     *      所有源码包里面的东西都会被合并放在类路径里面；
+     *      java：/bin/
+     *      web：/WEB-INF/classes/
+     * 2）、导包commons-logging-1.1.3.jar（依赖）
+     * 3）、先导包再创建配置文件；
+     * 4）、Spring的容器接管了标志了s的类；
+     */
+    /**
+     * 几个细节：
+     * 1）、ApplicationContext（IOC容器的接口）
+     * 2）、Q:给容器中注册一个组件；我们也从容器中按照id拿到了这个组件的对象？
+     *      A:组件的创建工作，是容器完成；
+     *      Q:Person对象是什么时候创建好了呢？
+     *      A:容器中对象的创建在容器创建完成的时候就已经创建好了；
+     * 3）、同一个组件在ioc容器中是单实例的；容器启动完成都已经创建准备好的；
+     * 4）、容器中如果没有这个组件，获取组件？报异常
+     * org.springframework.beans.factory.NoSuchBeanDefinitionException:
+     * No bean named 'person' is defined
+     * 5）、ioc容器在创建这个组件对象的时候，(property)会利用setter方法为javaBean的属性进行赋值；
+     * 6）、javaBean的属性名是由什么决定的？getter/setter方法是属性名;set去掉后面那一串首字母小写就是属性名;
+     *
+     *      所有getter/setter都自动生成！
+     */
+```
+
+
 ---
 ## AOP介绍
 
