@@ -320,5 +320,122 @@ Calculator bean = ioc.getBean(Calculator.class);
 bean.add(2, 1);
 ```
 
+### AOP切入点表达式细节
+
+```java
+/**
+	 * 切入点表达式的写法；
+	 * 固定格式： execution(访问权限符  返回值类型  方法全类名(参数表))
+	 *   
+	 * 通配符：
+	 * 		*：
+	 * 			1）匹配一个或者多个字符:execution(public int com.atguigu.impl.MyMath*r.*(int, int))
+	 * 			2）匹配任意一个参数：第一个是int类型，第二个参数任意类型；（匹配两个参数）
+	 * 				execution(public int com.atguigu.impl.MyMath*.*(int, *))
+	 * 			3）只能匹配一层路径
+	 * 			4）权限位置*不能；权限位置不写就行；public【可选的】
+	 * 		..：
+	 * 			1）匹配任意多个参数，任意类型参数
+	 * 			2）匹配任意多层路径:
+	 * 				execution(public int com.atguigu..MyMath*.*(..));
+	 * 
+	 * 记住两种；
+	 * 最精确的：execution(public int com.atguigu.impl.MyMathCalculator.add(int,int))
+	 * 最模糊的：execution(* *.*(..))：千万别写；
+	 * 
+	 * &&”、“||”、“!
+	 * 
+	 * &&：我们要切入的位置满足这两个表达式
+	 * 	MyMathCalculator.add(int,double)
+	 * execution(public int com.atguigu..MyMath*.*(..))&&execution(* *.*(int,int))
+	 * 
+	 * 
+	 * ||:满足任意一个表达式即可
+	 * execution(public int com.atguigu..MyMath*.*(..))||execution(* *.*(int,int))
+	 * 
+	 * !：只要不是这个位置都切入
+	 * !execution(public int com.atguigu..MyMath*.*(..))
+	 * 
+
+	 */
+```
+
+### 拿到目标方法的详细信息
+
+
+
++ 只需要为通知方法的参数列表上写一个参数：JoinPoint joinPoint(org.aspectj.lang包)：封装了当前目标方法的详细信息
+
+```java
+@Before("execution(public int com.atguigu.impl.MyMathCalculator.*(..))")
+	public static void logStart(JoinPoint joinPoint){
+		//获取到目标方法运行是使用的参数
+		Object[] args = joinPoint.getArgs();
+		//获取到方法签名
+		Signature signature = joinPoint.getSignature();
+		String name = signature.getName();
+		System.out.println("【"+name+"】方法开始执行，用的参数列表【"+Arrays.asList(args)+"】");
+	}
+```
+
++ 告诉Spring哪个参数是用来接收异常throwing="exception"：告诉Spring哪个参数是用来接收异常;告诉Spring这个result用来接收返回值：returning="result"；(用法相同)
+
+```java
+@AfterThrowing(value="execution(public int com.atguigu.impl.MyMathCalculator.*(..))",throwing="exception")
+	public static void logException(JoinPoint joinPoint,Exception exception) {
+		System.out.println("【"+joinPoint.getSignature().getName()+"】方法执行出现异常了，异常信息是【"+exception+"】：；这个异常已经通知测试小组进行排查");
+	}
+```
+
++ Exception exception:指定通知方法可以接收哪些异常
+
+**方法的参数列表一定不能乱写**
+
+### 环绕通知
+
+```java
+/**
+	 * @Around：环绕	:是Spring中强大的通知；
+	 * @Around：环绕:动态代理；
+	 * 	try{
+	 * 			//前置通知
+	 * 			method.invoke(obj,args);
+	 * 			//返回通知
+	 * 	}catch(e){
+	 * 			//异常通知
+	 *  }finally{
+	 * 			//后置通知
+	 * 	}
+	 * 		
+	 * 	四合一通知就是环绕通知；
+	 * 	环绕通知中有一个参数：	ProceedingJoinPoint 
+	 * 
+	 *环绕通知：是优先于普通通知执行，执行顺序；
+	 *
+	 *[普通前置]
+	 *{
+	 *	try{
+	 *		环绕前置
+	 *		环绕执行：目标方法执行
+	 *		环绕返回
+	 *	}catch(){
+	 *		环绕出现异常
+	 *	}finally{
+	 *		环绕后置
+	 *	}
+	 *}
+	 *
+	 *
+	 *[普通后置]
+	 *[普通方法返回/方法异常]
+	 *新的顺序：
+	 *		（环绕前置---普通前置）----目标方法执行----环绕正常返回/出现异常-----环绕后置----普通后置---普通返回或者异常
+    *
+    *如果有对同一个目标方法有两个切面的话，按首字母的顺序执行（或使用@Order(int)来改变顺序【数值越小优先级越高】）；
+    *执行顺序类似于一条线贯穿同心圆，先执行前置的，后置最后执行
+	 */
+```
+ 
+
 ---
 此文档为在B站学习ssm框架的笔记以及从其他地方整理的资料（[点击访问原视频](https://www.bilibili.com/video/BV1d4411g7tv?p=1 "尚硅谷雷丰阳大神的Spring、Spring MVC、MyBatis课程")）
