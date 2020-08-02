@@ -436,6 +436,13 @@ bean.add(2, 1);
 	 */
 ```
  
+### AOP使用场景
+
++ AOP加日志保存到数据库；
++ AOP做权限验证；
++ AOP做安全检查；
++ AOP做事务控制
+
 
 ---
 此文档为在B站学习ssm框架的笔记以及从其他地方整理的资料（[点击访问原视频](https://www.bilibili.com/video/BV1d4411g7tv?p=1 "尚硅谷雷丰阳大神的Spring、Spring MVC、MyBatis课程")）
