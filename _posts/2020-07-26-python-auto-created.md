@@ -2,7 +2,7 @@
 layout: post
 title: "Python创建一个博客模板"
 date: 2020-07-26 10:27:42
-categories: python 博客模板
+categories: python Blog-template
 ---
 因为本博客时使用jekyll搭建，每篇文章需要在"/_posts"下新建md文件，每次手动创建有点麻烦，所以使用python写了一个小脚本
 
