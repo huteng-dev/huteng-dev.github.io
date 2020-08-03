@@ -537,7 +537,7 @@ bean.add(2, 1);
 		<aop:pointcut expression="execution(* com.atguigu.impl.*.*(..))" id="globalPoint"/>
         <!-- 方便调用 -->
 	
-		<!-- 普通前置  ===== 目标方法  =====(环绕执行后置/返回)====s普通后置====普通返回    -->
+		<!-- 普通前置  ===== 目标方法  =====(环绕执行后置/返回)====普通后置====普通返回    -->
 		<!-- 指定切面：@Aspect -->
 		<aop:aspect ref="logUtils" order="1">
 			<!-- 配置哪个方法是前置通知；method指定方法名 
