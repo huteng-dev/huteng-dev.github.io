@@ -42,7 +42,7 @@ if "_posts" in os.listdir():
     title: "{title}"
     date: {realtime}
     categories: {tag}
-    ---
+---
     ''')
         print("success")
 else:
