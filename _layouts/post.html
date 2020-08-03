@@ -116,8 +116,8 @@ layout: default
         border-radius: 1px;
     }
     </style>
-</head>
-<body>
+
+<script>
   $(function() {
     $(window).scroll(function() {
         if ($(window).scrollTop() > 1000)
@@ -129,6 +129,11 @@ layout: default
         $('html, body').animate({scrollTop: 0}, 1000);
     });
 });
+</script>
+
+</head>
+<body>
+  
   <div class="go-top">
     <div class="arrow"></div>
     <div class="stick"></div>
