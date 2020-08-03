@@ -522,6 +522,46 @@ bean.add(2, 1);
 	 */
 ```
  
+### 基于配置的AOP使用方法
+
+```xml
+	<!--  开启基于注解的AOP功能；aop名称空间-->
+	
+	<!--  基于配置的AOP-->
+	<bean id="myMathCalculator" class="com.atguigu.impl.MyMathCalculator"></bean>
+	<bean id="BValidateApsect" class="com.atguigu.utils.BValidateApsect"></bean>
+	<bean id="logUtils" class="com.atguigu.utils.LogUtils"></bean>
+	
+	<!-- 需要AOP名称空间 -->
+	<aop:config>
+		<aop:pointcut expression="execution(* com.atguigu.impl.*.*(..))" id="globalPoint"/>
+        <!-- 方便调用 -->
+	
+		<!-- 普通前置  ===== 目标方法  =====(环绕执行后置/返回)====s普通后置====普通返回    -->
+		<!-- 指定切面：@Aspect -->
+		<aop:aspect ref="logUtils" order="1">
+			<!-- 配置哪个方法是前置通知；method指定方法名 
+			logStart@Before("切入点表达式")
+			-->
+			<!-- 当前切面能用的 -->
+			<aop:around method="myAround" pointcut-ref="mypoint"/>
+			<aop:pointcut expression="execution(* com.atguigu.impl.*.*(..))" id="mypoint"/>
+			<aop:before method="logStart" pointcut="execution(* com.atguigu.impl.*.*(..))"/>
+			<aop:after-returning method="logReturn" pointcut-ref="mypoint" returning="result"/>
+			<aop:after-throwing method="logException" pointcut-ref="mypoint" throwing="exception"/>
+			<aop:after method="logEnd" pointcut-ref="mypoint"/>
+		</aop:aspect>
+	
+		<aop:aspect ref="BValidateApsect" order="3">
+			<aop:before method="logStart" pointcut-ref="globalPoint"/>
+			<aop:after-returning method="logReturn" pointcut-ref="globalPoint" returning="result"/>
+			<aop:after-throwing method="logException" pointcut-ref="globalPoint" throwing="exception"/>
+			<aop:after method="logEnd" pointcut-ref="globalPoint"/>
+		</aop:aspect>
+		<!-- 在切面类中使用五个通知注解来配置切面中的这些通知方法都何时何地运行 -->
+	</aop:config>
+```
+
 ### AOP使用场景
 
 + AOP加日志保存到数据库；
