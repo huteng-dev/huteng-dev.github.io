@@ -49,6 +49,35 @@ layout: default
     <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
     <!--Valine 的核心代码库:-->
     <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+    <style>
+      #backtop a { /* back to top button */
+          text-align: center;
+          line-height: 50px;
+          font-size: 16px;
+          width:50px;
+          height: 50px;
+          position: fixed;
+          bottom: 10px; /* 小按钮到浏览器底边的距离 */
+          right: 60px; /* 小按钮到浏览器右边框的距离 */
+          color: rgb(64,120,192); /* 小按钮中文字的颜色 */
+          z-index: 1000;
+          background: #fff; /* 小按钮底色 */
+          padding: auto; /* 小按钮中文字到按钮边缘的距离 */
+          border-radius: 50px; /* 小按钮圆角的弯曲程度（半径）*/
+          -moz-border-radius: 50px;
+          -webkit-border-radius: 50px;
+          font-weight: bold; /* 小按钮中文字的粗细 */
+          text-decoration: none !important;
+          box-shadow:0 1px 2px rgba(0,0,0,.15), 0 1px 0 #ffffff inset;
+      }
+
+      #backtop a:hover { /* 小按钮上有鼠标悬停时 */
+        background: rgba(64,120,192,0.8); /* 小按钮的底色 */
+        color: #fff; /* 文字颜色 */
+      }
+  </style>
+
 </head>
 <body>
     <div class="comment"></div>
@@ -62,49 +91,10 @@ layout: default
             placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!' // [v1.0.7 new]留言框占位提示文字
         });
     </script>
-</body>
-</html>
 
-<!-- top -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>back to top</title>
-    <style>
-        #backtop a { /* back to top button */
-            text-align: center;
-            line-height: 50px;
-            font-size: 16px;
-            width:50px;
-            height: 50px;
-            position: fixed;
-            bottom: 10px; /* 小按钮到浏览器底边的距离 */
-            right: 60px; /* 小按钮到浏览器右边框的距离 */
-            color: rgb(64,120,192); /* 小按钮中文字的颜色 */
-            z-index: 1000;
-            background: #fff; /* 小按钮底色 */
-            padding: auto; /* 小按钮中文字到按钮边缘的距离 */
-            border-radius: 50px; /* 小按钮圆角的弯曲程度（半径）*/
-            -moz-border-radius: 50px;
-            -webkit-border-radius: 50px;
-            font-weight: bold; /* 小按钮中文字的粗细 */
-            text-decoration: none !important;
-            box-shadow:0 1px 2px rgba(0,0,0,.15), 0 1px 0 #ffffff inset;
-        }
-
-        #backtop a:hover { /* 小按钮上有鼠标悬停时 */
-          background: rgba(64,120,192,0.8); /* 小按钮的底色 */
-          color: #fff; /* 文字颜色 */
-        }
-    </style>
-
-</head>
-<body>
-  
   <div id="backtop">
     <a href="#">TOP</a>
- </div> 
-
+  </div> 
 </body>
 </html>
+
