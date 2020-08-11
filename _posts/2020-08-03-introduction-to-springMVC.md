@@ -2,7 +2,7 @@
     layout: post
     title: "SpringMVC"
     date: 2020-08-03 11:43:42
-    categories: Spring SpringMVC
+    categories: SpringMVC
 ---
 SpringMVC是一种轻量级的、基于MVC的Web层应用框架。偏前端而不是基于业务逻辑层。是Spring框架的一个后续产品。
 
