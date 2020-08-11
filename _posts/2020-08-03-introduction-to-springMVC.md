@@ -236,3 +236,64 @@ REST：即 Representational State Transfer。（资源）表现层状态转化�
 ```
 
 *高版本Tomcat；Rest支持有点问题。如果出现405报错，解决办法是在jsp页面配置 isErrorPage="true"*
+
+---
+
+## 数据输出
+
+### 如何将数据带给页面
+```java
+/**
+ * SpringMVC除过在方法上传入原生的request和session外还能怎么样把数据带给页面
+ *
+ * 1）、可以在方法处传入Map、或者Model或者ModelMap。
+ *      给这些参数里面保存的所有数据都会放在请求域中。可以在页面获取
+ *   关系：
+ *      Map，Model，ModelMap：最终都是BindingAwareModelMap在工作；
+ *      相当于给BindingAwareModelMap中保存的东西都会被放在请求域中；
+ *
+ *      Map(interface(jdk))      Model(interface(spring)) 
+ *          ||                          //
+ *          ||                         //
+ *          \/                        //
+ *      ModelMap(clas)               //
+ *                  \\              //
+ *                   \\            //
+ *                  ExtendedModelMap
+ *                          ||
+ *                          \/
+ *                  BindingAwareModelMap
+ *
+ * 2）、方法的返回值可以变为ModelAndView类型；
+ *          既包含视图信息（页面地址）也包含模型数据（给页面带的数据）；
+ *          而且数据是放在请求域中；
+ *          request、session、application；
+ *          
+ */
+```
+
+---
+
+
+## SpringMVC重定向和转发
+
+```java
+/**
+	 *  forward:转发到一个页面
+	 *  /hello.jsp：转发当前项目下的hello；
+	 *  
+	 *  一定加上/，如果不加/就是相对路径。容易出问题；
+	 *  forward:/hello.jsp
+	 *  forward:前缀的转发，不会由我们配置的视图解析器拼串
+	 * 	
+     * 重定向到hello.jsp页面
+	 * 有前缀的转发和重定向操作，配置的视图解析器就不会进行拼串；
+	 * 
+	 * 转发	forward:转发的路径
+	 * 重定向	redirect:重定向的路径
+	 * 		/hello.jsp:代表就是从当前项目下开始；SpringMVC会为路径自动的拼接上项目名
+	 * 
+	 * 		原生的Servlet重定向/路径需要加上项目名才能成功
+	 * 		response.sendRedirect("/hello.jsp")
+     */
+```
