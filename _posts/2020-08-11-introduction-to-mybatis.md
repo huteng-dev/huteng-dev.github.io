@@ -41,6 +41,7 @@ mybatis的映射配置文件位置必须和dao接口的包结构相同
 ### 方法
 在使用Mybatis中，有两种开发方式，一种是基于XML文档，另一种是基于注解。
 + 基于注解
+
 ```java
 public interface UserDao {
     @Select("select * from user")
@@ -48,6 +49,7 @@ public interface UserDao {
 }
 ```
 + 基于XML文档
+
 ```xml
 <mapper namespace="dao.UserDao">
     <!--查询user表中的所有信息 -->
