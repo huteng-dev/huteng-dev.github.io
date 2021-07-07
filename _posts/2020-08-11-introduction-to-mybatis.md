@@ -53,9 +53,9 @@ public interface UserDao {
 ```xml
 <mapper namespace="dao.UserDao">
     <!--查询user表中的所有信息 -->
-    <select id="findAll" resultType="model.User">
-        select * from user
-    </select>
+    <delete id="findAll" resultType="model.User">
+        delete from user where id = #{id}
+    </delete>
 </mapper>
 ```
 
